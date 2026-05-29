@@ -1,7 +1,7 @@
 package com.uteq.apirest_2026_a;
 
 import android.os.Bundle;
-import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,13 +34,13 @@ public class Supabase extends AppCompatActivity {
             return insets;
         });
 
-        EditText txtAlumnos = findViewById(R.id.txtAlumnos);
+        TextView txtAlumnos = findViewById(R.id.txtAlumnos);
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
         JsonArrayRequest request = new JsonArrayRequest(
                 Request.Method.GET,
-                "https://bwtetqurzuhvpxzbatai.supabase.co/rest/v1/Alumnos",
+                "https://vtctgskcxoadygvidavh.supabase.co/rest/v1/Alumnos",
                 null,
                 response -> {
                     try {
@@ -65,7 +65,10 @@ public class Supabase extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() {
                 Map<String, String> headers = new HashMap<>();
-                headers.put("apikey", "sb_secret_dqjJW6qXIJzb5XAk41lObA_2w-PRdqA");
+                // Reemplaza con tu clave de Supabase (Settings > API > service_role key)
+                String apiKey = "TU_SUPABASE_API_KEY";
+                headers.put("apikey", apiKey);
+                headers.put("Authorization", "Bearer " + apiKey);
                 return headers;
             }
         };
@@ -73,4 +76,4 @@ public class Supabase extends AppCompatActivity {
         queue.add(request);
 
     }
-}}
+}
